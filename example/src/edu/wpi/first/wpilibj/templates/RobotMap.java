@@ -29,6 +29,9 @@ public class RobotMap {
     public static final int liftEncoderA = 1;
     public static final int liftEncoderB = 2;
     
+    /*Lift Limit Switch*/
+    public static final int liftLimitSwitch = 14;
+    
     /*Grabber Motor Port*/
     public static final int grabberMotor = 2;
     

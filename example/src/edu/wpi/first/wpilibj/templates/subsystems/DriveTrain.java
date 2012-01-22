@@ -11,20 +11,13 @@ import edu.wpi.first.wpilibj.templates.commands.DriveWithStick;
  *
  */
 public class DriveTrain extends Subsystem {
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-    RobotDrive drive;
-    
-    /** Constructor sets up all of the properties of the subsystem, including 
-     * the RobotDrive object.
-     */
-    public void DriveTrain(){
-        //Use the RobotMap to find our motors
-        drive = new RobotDrive(RobotMap.dtFrontLeftMotor, 
+    //The RobotDrive object drive is a property of the drivetrain. It's private,
+    //  meaning only the drivetrain can access it.
+    //Use the RobotMap to find our motors
+    private final RobotDrive drive = new RobotDrive(RobotMap.dtFrontLeftMotor, 
                 RobotMap.dtBackLeftMotor,
                 RobotMap.dtFrontRightMotor,
                 RobotMap.dtBackRightMotor);
-    }
     
     /** This method is just a wrapper for the mecanumDriveCartesion method of 
      * RobotDrive.
