@@ -18,9 +18,9 @@ public class RobotMap {
     
     /*Drivetrain Motor Ports*/
     public static final int dtFrontLeftMotor = 1;   //Port number of the FL motor
-    public static final int dtFrontRightMotor = 2;  //Port number of the FR motor
-    public static final int dtBackLeftMotor = 3;    //Port number of the BL motor
-    public static final int dtBackRightMotor = 4;   //Port number of the BR motor
+    public static final int dtFrontRightMotor = 8;  //Port number of the FR motor
+    public static final int dtBackLeftMotor = 4;    //Port number of the BL motor
+    public static final int dtBackRightMotor = 6;   //Port number of the BR motor
     
     /*Lift Motor Port*/
     public static final int liftMotor = 5;
@@ -30,7 +30,7 @@ public class RobotMap {
     public static final int liftEncoderB = 2;
     
     /*Grabber Motor Port*/
-    public static final int grabberMotor = 6;
+    public static final int grabberMotor = 2;
     
     /*Lift Encoder Port (Magnetic Encoders have 1 input)*/
     public static final int grabberEncoder = 1;
