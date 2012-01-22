@@ -56,7 +56,7 @@ public class Lift extends PIDSubsystem {
      * @return Position value (the value from the sensor)
      */
     protected double returnPIDInput() {
-        //We want to use the encoder value for out position, but we also want 
+        //We want to use the encoder value for our position, but we also want 
         //to reset it when we hit the limit switch
         
         

@@ -30,14 +30,14 @@ public class LiftTo  extends CommandBase {
     protected void execute() {
     }
 
-    /*Returns true (which tells the command to end) when we're at the setpoint.
+    /**Returns true (which tells the command to end) when we're at the setpoint.
      * 
      */
     protected boolean isFinished() {
         return lift.atSetpoint();
     }
 
-    /*Called at the end of the command. Since the PID controller is doing all of
+    /**Called at the end of the command. Since the PID controller is doing all of
      * the work (including stopping the motor when we get there), this does 
      * nothing.
      */
