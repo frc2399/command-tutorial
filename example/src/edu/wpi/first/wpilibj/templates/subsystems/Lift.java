@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.templates.RobotMap;
+import edu.wpi.first.wpilibj.templates.commands.LiftWithStick;
 
 /**
  *
@@ -77,8 +78,18 @@ public class Lift extends PIDSubsystem {
             return encoder.getDistance();
         }
     }
+    
     protected void usePIDOutput(double output) {
         motor.set(output);
+    }
+    
+    /**This function tells us if we're at the setpoint (useful for knowing if a
+     * command has finished). It returns true if we're within an inch of the 
+     * setpoint.
+     * @return atSetpoint? (True if less than 1 inch from setpoint)
+     */
+    public boolean atSetpoint(){
+        return Math.abs(getPosition() - getSetpoint()) < 1;
     }
 }
 
