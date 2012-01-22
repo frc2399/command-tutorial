@@ -22,7 +22,7 @@ public class Lift extends PIDSubsystem {
     
     private final Jaguar motor = new Jaguar(RobotMap.liftMotor);
     private final Encoder encoder = new Encoder(RobotMap.liftEncoderA,RobotMap.liftEncoderB);
-    private final DigitalInput lowerLimit = new DigitalInput(RobotMap.liftLimitSwitch);
+    private final DigitalInput limitSwitch = new DigitalInput(RobotMap.liftLimitSwitch);
     
     
     public Lift() {
@@ -48,6 +48,37 @@ public class Lift extends PIDSubsystem {
     public void initDefaultCommand() {
         //The default for the lift is to drive it with the joystick
         setDefaultCommand(new LiftWithStick());
+    }
+    
+    /**This function sends the position value to the PID controller.
+     * 
+     * @return Position value (the value from the sensor)
+     */
+    protected double returnPIDInput() {
+        //We want to use the encoder value for out position, but we also want 
+        //to reset it when we hit the limit switch
+        
+        
+        if(limitSwitch.get()){
+            //If we hit the limit switch, reset the encoder to 0 and send the
+            //encoder value to the PID controller
+            encoder.reset();
+            return encoder.getDistance();
+        }
+        else if(getSetpoint()==LOWER_BOUND && encoder.getDistance()<=0){
+            //If the arm is going to the bottom, and the encoder goes to 0 
+            //or below), set the position value to 1. (That way the arm will 
+            //keep going until we hit the switch and reset.)
+            //(We're lying to the PID controller here.)
+            return 1;
+        }
+        else{
+           //Tell the truth
+            return encoder.getDistance();
+        }
+    }
+    protected void usePIDOutput(double output) {
+        motor.set(output);
     }
 }
 

@@ -1,7 +1,7 @@
 package edu.wpi.first.wpilibj.templates.commands;
 
 
-/**
+/**A command to move the lift using a joystick.
  *
  * @author Edward
  */
